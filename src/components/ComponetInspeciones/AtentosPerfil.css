@@ -1,0 +1,90 @@
+.atentosPerfil {
+  width: 33rem;
+  height: 5rem;
+  /* background-color: pink; */
+  margin-bottom: 1px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 1px solid gray;
+  margin-bottom: 0.5rem;
+}
+.contatentosOper {
+  width: 33rem;
+  display: flex;
+  background: #d3fdff90;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+  border-radius: 1rem;
+}
+.tipoatentoOper {
+  width: 50%;
+  /* background: pink; */
+  padding-right: 1rem;
+  display: flex;
+  justify-content: right;
+}
+.atentoNombreOper {
+  width: 60%;
+  margin-right: 1rem;
+  font-size: 1.5rem;
+  color: black;
+}
+.atentoDescrition {
+  width: 32rem;
+  font-size: 0.7rem;
+  padding-left: 1rem;
+  text-align: left;
+  color: red;
+  margin-bottom: 0.7rem;
+}
+
+@media (max-width: 760px) {
+  .slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .contenedorDetalleAtento {
+    width: 18rem;
+    height: 19rem;
+    margin-left: 2rem;
+    display: flex;
+    justify-content: top;
+    align-items: center;
+    /* background: pink; */
+  }
+  .atentosPerfil {
+    width: 17rem;
+    height: 11rem;
+    justify-content: flex-start;
+    /* margin: 1rem; */
+    /* background: pink; */
+  }
+  .atentosPerfil  h5{
+    font-size: 0.65rem;
+    font-weight: bold;
+  }
+  .atentosPerfil p {
+    width: 17rem;
+    margin: 0px;
+    background-color: rgb(252, 227, 227);
+    border-radius: 1rem;
+  }
+  .contatentosOper {
+    width: 17rem;
+  }
+
+  .atentoDescrition {
+    width: 17rem;
+    margin-top: 0.4rem;
+    margin-bottom: 0px;
+  }
+
+  .titleAtentos{
+    margin-left: 2rem;
+  }
+}

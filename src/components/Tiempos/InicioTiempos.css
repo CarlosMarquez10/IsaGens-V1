@@ -1,0 +1,168 @@
+.conatinerConstrution {
+  width: 70vw;
+  height: 100vh;
+  margin-top: 0px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: top;
+}
+
+h1 {
+  font-size: 28px;
+  color: black;
+  font-weight: bold;
+}
+
+.nav-container-tiempos {
+  width: 100%;
+  height: 7%;
+  padding: 0px 40px 0px 40px;
+  background: rgb(248, 14, 14);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  box-shadow: 1px 1px 0px 1px grey;
+}
+
+.title-modulo-carga {
+  width: 50%;
+  font-size: 1.3rem;
+  font-weight: 400;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: bisque;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.container-btn-nav {
+  width: 50%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.subir-file {
+  width: 20%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.delete-file {
+  width: 20%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.btn-carga-tiempos {
+  width: 100%;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 1.3rem;
+  background: green;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.btn-delete-tiempos {
+  width: 100%;
+  margin-right: 1rem;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #043d92;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* estilos de la barra de titulos del continer de archivo */
+
+.header-titles-campus {
+  width: 100%;
+  height: 3%;
+  padding: 0px 20px 0px 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  background-color: #606060;
+  box-shadow: 0px 1px 0px 1px grey;
+}
+.cont-title-check {
+  width: 25%;
+}
+
+.cont-name-file {
+  width: 25%;
+}
+
+.cont-date-file {
+  width: 25%;
+}
+
+.cont-name-user {
+  width: 25%;
+}
+
+section p {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+
+/* estilos del container de los archivos */
+
+.conatiner-archivos {
+  width: 100%;
+  height: 70%;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  overflow-y: scroll;
+  scrollbar-width: none;
+  border: 1px;
+  background-color: white;
+  box-shadow: 0px 1px 1px 1px grey;
+}
+
+/* estilos del contenedor de los archivos */
+
+.Cont-archivos {
+  width: 100%;
+  height: 10%;
+  padding: 0px 20px 0px 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  border-top: 0.7px solid grey;
+  border-bottom: 0.7px solid grey;
+}
+
+.check-delete {
+  width: 25%;
+  height: 50%;
+}
+
+.name-file {
+  width: 25%;
+}
+
+article p {
+  padding-left: 0.4rem;
+  color: black;
+}
+
+.Date-file-loand {
+  width: 25%;
+}
+
+.name-user-loand {
+  width: 25%;
+}

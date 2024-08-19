@@ -1,0 +1,91 @@
+.slide {
+  padding: 20px;
+}
+
+.titleAtentos h2 {
+  font-size: 24px;
+  color: black;
+}
+
+.insp-accion {
+  background-color: #f9f9f9;
+  margin-top: 0.7rem;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.regional {
+  font-size: 18px;
+  margin-bottom: 15px;
+  color: black;
+}
+
+.semanas {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.semana {
+  flex: 1 1 20%; /* Distribuye los divs de manera horizontal */
+  padding: 10px;
+  margin: 5px;
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  text-align: center;
+  color: black;
+}
+
+.semana-label {
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: #e20303;
+}
+
+.semana-cantidad {
+  font-size: 18px;
+}
+
+@media (max-width: 760px) {
+  .semanas {
+    flex-direction: column;
+    width: 15rem;
+  }
+
+  .titleAtentos {
+    width: 17rem !important;
+    font-size: 1rem !important;
+  }
+  .semana {
+    height: 2rem;
+    flex: 1 1 100%; /* Cada div ocupa toda la anchura del contenedor */
+    text-align: left;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  .semana-label,
+  .semana-cantidad {
+    display: block;
+    height: 2rem;
+  }
+
+  .semana-label {
+    margin-bottom: 5px;
+    color: #e20303;
+    /* background: pink; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .semana-cantidad {
+    /* background-color: yellow; */
+  }
+
+  .insp-accion {
+    margin-top: 0rem;
+  }
+}

@@ -1,0 +1,10 @@
+.tbMOdalidad{
+    background-color: red !important;
+    color: white;
+}
+
+.totalesTable td{
+    background: red !important;
+    color: white !important;
+}
+

@@ -1,0 +1,22 @@
+.myiframecont{
+    width: 100vw;
+    min-height: 93vh;
+    position: relative;
+}
+
+.myiframe{
+    width: 100vw;
+    min-height: 93vh;
+    position: relative;
+    scrollbar-width: none;
+}
+
+.permisoMjs{
+    width: 100vw;
+    height: 93vh;
+    padding: 50px 20px;
+    background: rgb(168, 95, 95);
+    color: beige;
+    text-align: center;
+
+}

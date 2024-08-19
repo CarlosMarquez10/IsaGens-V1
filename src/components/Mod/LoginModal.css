@@ -1,0 +1,72 @@
+/* Estilos generales para la ventana emergente */
+
+.containar-loginModal{
+  width: 100vw;
+  height: 93vh;
+}
+
+.login-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 300px;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilos para los campos de entrada */
+.login-input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  transition: border-color 0.3s ease;
+}
+
+/* Estilos para el efecto de enfoque */
+.login-input:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+/* Estilos para el placeholder cuando el campo está enfocado */
+.login-input::placeholder {
+  color: rgb(77, 8, 8);
+}
+
+/* Estilos para el texto del placeholder cuando el campo está enfocado */
+.login-input:focus::placeholder {
+  color: #007bff;
+  font-size: 12px;
+  transform: translateY(-10px);
+  transition: transform 0.3s ease;
+}
+
+/* Estilos para el botón de inicio de sesión */
+.login-button {
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff;
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.login-button:hover {
+  background-color: #0056b3;
+}
+
+
+.error-message {
+  margin-top: 1rem;
+  background-color: pink;
+  color: black;
+  text-align: center;
+  border-radius: 5px;
+}

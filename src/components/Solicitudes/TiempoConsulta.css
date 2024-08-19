@@ -1,0 +1,89 @@
+.conatinerConstrution {
+  width: 100vw;
+  height: 100vh;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.containerImgConstrution {
+  width: 300px;
+  height: 250px;
+  margin-bottom: 10px;
+}
+
+h1 {
+  font-size: 28px;
+  color: black;
+  font-weight: bold;
+}
+
+.msgerror{
+  width: 100vw;
+  margin-bottom: 1.5 rem;
+  background-color: red;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.msgProc{
+  width: 100vw;
+  margin-bottom: 1.5 rem;
+  background-color: orange;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.msgbn{
+  width: 100vw;
+  margin-bottom: 1.5 rem;
+  background-color: green;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.form-container{
+    max-width: 12rem;
+    max-height: 700px;
+    box-shadow: 1px 1px 1px 1px pink;
+    margin-bottom: 2rem;
+    margin-top: 3rem;
+    background-color: #606060;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  
+}
+
+.inptSolicitud{
+    margin-top: 0.3rem;
+    padding-left: 0.5rem;
+    font-size: 1.1rem;
+    color: rgb(46, 46, 46);
+}
+
+.spansolicitud{
+    color: red;
+    font-weight: 400;
+}
+
+.btnSolicitud{
+    margin-top: 1rem;
+}
+
+@media only screen and (min-width: 1201px) and (max-width: 1920px) {
+  .containerImgConstrution {
+    width: 600px;
+    height: 100vh;
+    margin-bottom: 10px;
+  }
+}

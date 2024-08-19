@@ -1,0 +1,501 @@
+.containerInspecciones {
+  width: 50%;
+  height: 55rem;
+  margin: 40px 0px 40px 0px;
+  padding: 40px;
+  background-color: #f5f5f5;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.contenedorDetalleAtento {
+  max-height: 400px; /* Ajusta esta altura según sea necesario */
+  overflow-y: auto;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 20px;
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  align-items: center;
+  /* background: pink; */
+  scrollbar-width: none;
+}
+
+.contenedorDetalleAtento p {
+  width: 500px;
+  /* background: green; */
+  text-align: left;
+  font-size: 10px;
+  font-weight: 400;
+  padding-left: 10px;
+}
+
+.atentosContPerfil {
+  /* height: 500px; */
+  display: flex;
+  margin-bottom: 0.4rem;
+  flex-direction: column;
+  justify-self: flex-end;
+  align-items: center;
+  border-bottom: 1px solid gray;
+}
+
+.atentosContPerfil span {
+  font-size: 0.73rem;
+  font-weight: bold;
+}
+.atentosContPerfil p {
+  font-size: 0.7rem;
+}
+.atentosContPerfil b {
+  color: red;
+  font-size: 0.8rem;
+}
+
+.atentosContPerfil h4 {
+  color: red;
+}
+
+.contenedorDetalleAtento h5 {
+  width: 500px;
+  text-align: left;
+  padding-left: 10px;
+  font-size: 12px;
+  font-weight: 400;
+  /* background: grey; */
+}
+
+.containerEstadoInspecciones {
+  width: 500px;
+  /* background: pink; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.containerEstadoInspecciones h5 {
+  width: 98%;
+  margin: 3px;
+  box-shadow: 0.5px 0.5px 1px 0.5px grey;
+  border-radius: 5px;
+  /* background: green; */
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.contEstadoRegionales {
+  background: #f8eaea;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 1rem;
+}
+
+.slidePerfilRegionales {
+  /* background: yellow; */
+  width: 30rem;
+}
+.containerEstadoInspecciones .span1 {
+  width: 75px;
+  /* background: pink */
+}
+
+.containerEstadoInspecciones .span2 {
+  width: 350px;
+  /* background: green; */
+}
+
+.containerEstadoInspecciones .span3 {
+  width: 75px;
+  /* background: grey; */
+}
+
+.navInspecciones {
+  margin: 225px 0px 0px 0px;
+}
+
+.titleAtentos {
+  width: 100%;
+  margin-bottom: 2rem;
+  background-color: rgb(228, 227, 227);
+  border-radius: 50px;
+}
+
+.slide {
+  text-align: center;
+  padding: 20px;
+}
+
+.progress-bar {
+  width: 50%;
+  background-color: #e0e0e0;
+  border-radius: 25px;
+  margin: 20px 0;
+}
+
+.progress {
+  height: 12px;
+  line-height: 12px;
+  font-size: 10px;
+  background-color: #76c7c0;
+  border-radius: 25px;
+  text-align: center;
+  color: white;
+}
+
+.atentosContenedor {
+  width: 100%;
+  height: 2rem;
+  margin: 0px;
+  padding: 0px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.cantidadAtento {
+  margin-left: 0.4rem;
+}
+
+.contLblAtento {
+  width: 50%;
+  margin: 0px;
+
+  padding-right: 2.5rem;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.contPerfil {
+  width: 200px;
+  height: 150px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.contfoto .imginicioperfil {
+  width: 80px;
+  height: 80px;
+}
+.contfiltro {
+  width: 200px;
+}
+
+.contFiltroPerfil {
+  margin-bottom: 30px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.contnombreperfil {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.btnFiltro {
+  width: 200px;
+  height: 40px;
+}
+.contSemanas {
+  margin-bottom: 0.5rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+.diasSemana {
+  width: 2.5rem;
+  height: 2.5rem;
+  margin: 0.2rem;
+  cursor: pointer;
+  text-align: center;
+  transition: all 0.2s ease; /* Transición para suavizar el cambio */
+}
+.diasSemana:hover {
+  background-color: red;
+  color: white;
+}
+.diasSemana:active {
+  background-color: red; /* Color de fondo cuando se hace clic */
+  transform: scale(1.1); /* Aumenta el tamaño cuando se hace clic */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Añade sombra cuando se hace clic */
+}
+.titleSemana {
+  width: 15rem;
+  text-align: right;
+  /* background: pink; */
+}
+.btnFiltroperfil {
+  width: 40px;
+  height: 37px;
+}
+
+.contfoto img {
+  width: 150px;
+}
+
+.btnfiltrosperfil {
+  width: 300px;
+  height: 100px;
+  display: flex;
+  /* flex-direction: column; */
+  justify-content: flex-end;
+  /* background: pink; */
+}
+
+.estadoGeneral {
+  width: 200px;
+  height: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* background: green; */
+}
+
+.progressGeneral {
+  height: 20px;
+  line-height: 20px;
+  font-size: 10px;
+  background-color: #e61542;
+  border-radius: 25px;
+  text-align: center;
+  color: white;
+}
+
+.progress-barperfil {
+  width: 120%;
+  background-color: #e0e0e0;
+  border-radius: 25px;
+  margin: 20px 0;
+}
+
+.error {
+  color: red;
+  margin-top: 5px;
+  font-size: 0.9em;
+}
+/* style perfil inspetion */
+
+@media (max-width: 760px) {
+  .containerInspecciones {
+    width: 90%;
+    height: 80rem;
+    padding: 10px;
+  }
+
+  .containerroot {
+    justify-content: flex-start;
+  }
+
+  .contFiltroPerfil {
+    margin-bottom: 0px;
+    /* background: #505050; */
+    border-radius: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .contFiltros {
+    width: 100%;
+    /* background: yellow; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .navarmenu {
+    margin-top: 0px;
+  }
+  .navInspecciones {
+    margin-top: 0px;
+  }
+
+  /* .contnombreperfil{
+  color: white;
+} */
+
+  .slide {
+    width: 290px;
+    margin: 0.2rem;
+    padding: 0.4rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .slideNc{
+    width: 18rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+  }
+
+  .Nc {
+    width: 290px;
+    height: 50rem !important;
+    margin: 0.2rem;
+    padding: 0.4rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    align-items: center;
+  }
+
+  /* .atentosContenedor {
+    display: ;
+  } */
+  .atentosContenedor {
+    width: 100%;
+    /* background: rgb(160, 235, 245); */
+  }
+
+  .contLblAtento label {
+    align-items: left;
+  }
+
+  .contenedorDetalleAtento {
+    height: 40rem !important;
+    width: 17rem;
+    margin: 0px 0px 20px 0px !important;
+  }
+  .PteInspOpr {
+    width: 18rem;
+  }
+
+  .titleAtentos {
+    width: 18rem;
+    margin: 25px 0px 20px 0px !important;
+  }
+  .titleAtentos h2 {
+    font-size: 1.3rem;
+    margin-bottom: 4px;
+  }
+  .contLblAtento {
+    width: 150px;
+    height: 12px;
+    margin: 0px;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+  }
+
+  .contLblAtento label {
+    /* width: 100%; */
+    font-size: 0.8rem;
+    margin: 0px;
+    padding: 0px;
+    /* background: pink; */
+  }
+  .atentosContenedor {
+    margin-top: 1rem;
+    align-items: left;
+  }
+  .contLblAtento {
+    justify-content: center;
+    padding-right: 3rem;
+  }
+  .cantidadAtento h4 {
+    font-size: 0.8rem;
+  }
+  .progress-bar {
+    width: 120px;
+    background-color: #e0e0e0;
+    border-radius: 25px;
+    margin: 20px 0;
+  }
+
+  .contenedorDetalleAtento h5 {
+    width: 16rem;
+    justify-content: left;
+  }
+  .containerEstadoInspecciones {
+    width: 18rem;
+  }
+
+  .atentosContPerfil {
+    width: 12rem;
+    padding: 0.2rem;
+  }
+
+ 
+  .atentosContPerfil p {
+    width: 15rem;
+    font-size: 0.7rem;
+  }
+  .atentosContPerfil b {
+
+    color: red;
+    font-size: 0.7rem;
+  }
+  
+  .atentosContPerfil h4 {
+    font-size: 0.8rem;
+    margin: 0.2rem 0rem 0.5rem 0rem;
+    color: red;
+  }
+
+  .atentosContPerfil h3{
+    font-size: 1rem;
+    text-align: center;
+  }
+
+  .contfoto .imginicioperfil {
+    margin-top: 1rem;
+    width: 3rem;
+    height: 3rem;
+  }
+
+  .contSemanas {
+    display: none;
+  }
+  .diasSemana {
+    width: 2.5rem;
+    height: 2.5rem;
+    margin: 0.2rem;
+    cursor: pointer;
+    text-align: center;
+    transition: all 0.2s ease; /* Transición para suavizar el cambio */
+  }
+  .diasSemana:hover {
+    background-color: red;
+    color: white;
+  }
+  .diasSemana:active {
+    background-color: red; /* Color de fondo cuando se hace clic */
+    transform: scale(1.1); /* Aumenta el tamaño cuando se hace clic */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Añade sombra cuando se hace clic */
+  }
+  .titleSemana {
+    width: 15rem;
+    text-align: right;
+    /* background: pink; */
+  }
+}
+
+@media only screen and (min-width: 1201px) and (max-width: 1920px) {
+  /* Estilos para pantallas de aproximadamente 20" */
+  .navarmenu {
+    margin-top: 0px;
+  }
+  .navInspecciones {
+    margin-top: 0px;
+  }
+  .containerroot {
+    justify-content: flex-start;
+  }
+}

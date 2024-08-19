@@ -1,0 +1,196 @@
+.ContainerConsultaPagos {
+  width: 90%;
+  height: 60rem;
+  margin-bottom: 2rem;
+  background-color: rgb(255, 255, 255);
+  display: flex;
+  flex-direction: column;
+  justify-content: top;
+  align-items: center;
+  /* position: relative; */
+}
+
+.ContainerConsultaPagos__title {
+  width: 88vw;
+  height: 5.5rem;
+  margin-top: 1rem;
+  background: rgb(192, 255, 195);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  border-radius: 1rem;
+  /* position: absolute; */
+
+}
+
+.ContainerConsultaPagos__title img {
+  width: 5rem;
+  height: 5rem;
+  border-radius: 50%;
+}
+
+.Container_Titles_pagos{
+    width: 88%;
+    margin: 2rem;
+}
+
+.Container_Pagos-form{
+    width: 88%;
+    height: 5rem;
+    /* background-color: pink; */
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+        border-bottom: 0.1rem solid grey;margin-bottom: 0.4rem;
+}
+
+.formPagos{
+    width: 90%;
+    height: 5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* border-bottom: 0.1rem solid grey; */
+    /* background-color: yellow; */
+}
+/* .labelPagos{
+    width: 10rem;
+    height: 3rem;
+    margin-right: 1rem;
+    background: pink;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+} */
+ .labelPagos{
+    display: none;
+ }
+.btnPagos{
+    width: 3rem;
+    height: 3rem;
+}
+.inputClientePagos{
+    width: 14rem;
+    height: 2rem;
+    padding-left: 1rem;
+    border-radius: 0.5rem;margin: 0.5rem;
+}
+.formPagos button{
+    width: 3rem;
+    height: 3rem;
+    margin: 0px;
+    padding: 0px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+.formPagos button:hover{
+    transform: scale(1.1);
+}
+.avisoCantidad{
+    margin-top: 0.3rem;
+    color:  red;
+}
+.containe-contadorPeticiones{
+    font-size: 2rem;
+    font-weight: 400;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: rgb(6, 126, 2);
+}
+
+.datosdelPago{
+    width: 88%;
+    height: 15.5rem;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    background: rgb(255, 236, 239);
+    border-radius: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.contenorRecaudo{
+    width: 70%;
+    height: 15rem;
+    /* background: green; */
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+.contenorRecaudo p{
+    width: 100%;
+    padding: 1rem;
+    color: black;
+   background: green;
+}
+
+.fechaPagos{
+    width: 30%;
+    height: 15rem;
+    /* background: rgb(255, 232, 182); */
+    border-radius: 1rem;
+}
+
+.tablePagos{
+    border-radius: 1rem;
+}
+
+@media (max-width: 760px) {
+  .ContainerConsultaPagos__title {
+    width: 20rem;
+    /* height: 5.5rem; */
+  }
+ .inputClientePagos{
+    width: 12rem;
+ }
+ .labelPagos{
+    display: none;
+ }
+ .datosdelPago{
+    height: 25rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+ }
+ .contenorRecaudo{
+    width: 18rem;
+    height: 8rem;
+    margin: 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    align-items: center;
+ }
+.contPagosDiv{
+    width: 100%;
+    margin-bottom: 0.2rem;
+}
+ .fechaPagos{
+    width: 18rem;
+    display: flex;
+    justify-content: center;
+
+ }
+
+ .fechaPagos .tablePagos, tbody{
+    width: 10rem;
+ }
+ thead{
+    font-size: 0.9rem;
+ }
+ tbody{
+    width: 1rem;
+    font-size: 0.9rem;
+ }
+
+}

@@ -1,0 +1,241 @@
+.containerLogin {
+  width: 60%;
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background: transparent;
+  box-shadow: 4px 4px 4px 1.7px rgb(191, 103, 103);
+  border-radius: 50px;
+}
+.containerform {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 30px;
+  margin-bottom: 20px;
+}
+
+.CampoDato {
+  display: flex;
+  align-items: center;
+  padding: 4px;
+}
+
+.iconslogin {
+  width: 28px;
+  height: 35px;
+  margin-bottom: 5px;
+  display: grid;
+  place-items: center;
+  padding: 4px;
+  background: rgb(189, 41, 39);
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  border-right: none;
+  color: white;
+  box-shadow: 2px 2px 2px 0.5px rgb(191, 103, 103);
+}
+
+.mensageerror {
+  margin-bottom: 0.5rem;
+  color: rgb(245, 80, 80);
+}
+.inptlog {
+  width: 80%;
+  height: 35px;
+  font-size: 1.2rem;
+  color: rgb(133, 10, 10);
+  font-weight: bold;
+  margin-bottom: 5px;
+  padding-left: 4px;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  border-left: none;
+  box-shadow: 2px 2px 2px 0.5px rgb(191, 103, 103);
+}
+
+.btnLogin {
+  width: 140px;
+  height: 35px;
+  border-radius: 7px;
+  margin-top: 10px;
+  background: rgb(189, 41, 39);
+  color: white;
+  font-size: 17px;
+  font-weight: bold;
+}
+
+.logoinmel {
+  margin: 20px 0px 0px 120px;
+  width: 100px;
+  height: 30px;
+}
+
+/* otros estilos para los input tipo google */
+
+body,
+root {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+form {
+  width: 100vw;
+  max-width: 250px;
+  padding: 20px;
+  /* border: 1px solid #f33232; */
+  border-radius: 5px;
+  /* box-shadow: 0 0 10px rgba(238, 148, 148, 0.1); */
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-family: Arial, sans-serif;
+}
+
+input {
+  width: 90%;
+  font-size: 1.2rem;
+  font-weight: 400;
+  font-family: Arial, sans-serif;
+  margin-bottom: 10px;
+  border: 1px solid #f3d1d1;
+  border-radius: 3px;
+}
+
+.containerroot01 .containerLogin .form-group {
+  position: relative;
+  margin-bottom: 1.5rem;
+}
+
+.containerroot01 .containerLogin .form-group label {
+  position: absolute;
+  top: 1rem;
+  left: 0.5rem;
+  transition: all 0.3s ease;
+  pointer-events: none;
+  color: #777;
+}
+
+.containerroot01 .containerLogin .form-group input {
+  width: 100%;
+  padding: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+}
+
+.containerroot01 .containerLogin .form-group input:focus + label,
+.form-group input:valid + label {
+  top: -1.3rem;
+  font-size: 1rem;
+  color: #e97177;
+}
+
+button {
+  width: 100%;
+  padding: 10px;
+  font-size: 1.2rem;
+  background-color: #cc103f;
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #eb4951;
+}
+
+.containerroot01 .containerLogin .form-group.filled label {
+  top: -1.3rem;
+  font-size: 1rem;
+  color: #e97177;
+}
+
+/* Estilos para pantallas de televisores */
+@media only screen and (min-width: 1201px) and (max-width: 1920px) {
+  .containerLogin {
+    width: 20%;
+    height: 50%;
+    padding-top: 75px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background: #313131;
+    border: none;
+    box-shadow: 4px 4px 4px 1.7px rgb(191, 103, 103);
+    border-radius: 50px;
+  }
+
+  .logoinmel {
+    visibility: block;
+  }
+}
+
+
+@media only screen and (min-width: 770px) and (max-width: 1201px) {
+  .containerLogin {
+    width: 100%;
+    height: 70%;
+    padding-top: 75px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background: #313131;
+    border: none;
+    box-shadow: 4px 4px 4px 1.7px rgb(191, 103, 103);
+    border-radius: 50px;
+  }
+
+  .logoinmel {
+    visibility: block;
+  }
+}
+
+
+
+@media only screen and (min-width: 360px) and (max-width: 769px) {
+  .containerLogin {
+    width: 80%;
+    height: 60%;
+    padding-top: 75px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background: #404040;
+    border: none;
+    box-shadow: 4px 4px 4px 1.7px rgb(191, 103, 103);
+    border-radius: 50px;
+  }
+
+  .containerroot01 .containerLogin .form-group input:focus + label,
+  .form-group input:valid + label {
+    top: -1.5rem;
+    font-size: 1rem;
+    color: #e97177;
+  }
+  .containerroot01 .containerLogin .form-group.filled label {
+    top: -1.5rem;
+    font-size: 1rem;
+    color: #e97177;
+  }
+
+
+
+  .logoinmel {
+    visibility: block;
+  }
+}

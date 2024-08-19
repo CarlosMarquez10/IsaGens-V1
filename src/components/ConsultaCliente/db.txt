@@ -1,0 +1,277 @@
+import Navar from "../Navar";
+import { useState, useEffect } from "react";
+import "./PegConsulta.css";
+import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+import "leaflet/dist/leaflet.css";
+import "../../App.css";
+import { IconLocation } from "../utils/icons";
+import { FaUserAlt } from "react-icons/fa";
+import { PiMapPinLineDuotone } from "react-icons/pi";
+
+
+
+function PegConsulta() {
+  const [Cliente, setCliente] = useState("");
+  const [DataGps, setDataGps] = useState({ Gps: { lat: "", lng: "" } });
+  const [msg, setMsg] = useState(
+    "Ingrese el numero Cliente o del medidor, la consulta puede  demorar unos segundos..."
+  );
+  const [isLoading, setIsLoading] = useState(false);
+  const [selectsearch, setSelectsearch] = useState("");
+  const [DataCliente, setDatosApi] = useState("");
+
+  const ClienteData = async (Cliente) => {
+    setIsLoading(true);
+    const url = `https://74pbcspn-3001.use2.devtunnels.ms/api/users/${Cliente}`;
+    try {
+      const response = await fetch(url);
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      const data = await response.json();
+      setIsLoading(false);
+      setDatosApi(data);
+      setDataGps({
+        Gps: {
+          lat: parseFloat(data.Latitud.replace(",", ".")),
+          lng: parseFloat(data.Longitud.replace(",", ".")),
+        }
+      })
+      setSelectsearch("");
+    } catch (error) {
+      console.error("Error al consumir la API:", error);
+      setIsLoading(false);
+      setMsg(
+        "No se encontró el Usuario - verifica el número del cliente o informar al Cgo"
+      );
+      setDatosApi("");
+      setDataGps({ Gps: { lat: "", lng: "" } });
+    }
+    setSelectsearch("");
+  };
+
+  const MedidorData = async (Cliente) => {
+    setIsLoading(true);
+    const url = `https://74pbcspn-3001.use2.devtunnels.ms/api/medidor/${Cliente}`;
+    try {
+      const response = await fetch(url);
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      const data = await response.json();
+      setIsLoading(false);
+      setDatosApi(data);
+      setDataGps({
+        Gps: {
+          lat: parseFloat(data.Latitud.replace(",", ".")),
+          lng: parseFloat(data.Longitud.replace(",", ".")),
+        }
+      })
+      setSelectsearch("");
+    } catch (error) {
+      console.error("Error al consumir la API:", error);
+      setIsLoading(false);
+      setMsg(
+        "No se encontró el Medidor - verifica el número del Medidor o informar al Cgo"
+      );
+      setDatosApi("");
+      setDataGps({ Gps: { lat: "", lng: "" } });
+      setSelectsearch("");
+    }
+  };
+
+  useEffect(() => {
+    if (Cliente) {
+      if (selectsearch === "Usuario") {
+        ClienteData(Cliente);
+      } else if (selectsearch === "Medidor") {
+        MedidorData(Cliente);
+      }
+    }
+  }, [selectsearch]);
+
+  const handleSelectSearch = (value) => {
+    // Verificar si el campo Cliente está vacío antes de cambiar el estado
+    if (Cliente.trim() === "") {
+      alert("Por favor, ingrese un número de cliente o medidor.");
+      return;
+    }
+    setSelectsearch(value);
+  };
+
+  const handleMapClick = () => {
+    // Obtener la ubicación actual del dispositivo usando la API de geolocalización
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        const startCoordinates = `${position.coords.latitude},${position.coords.longitude}`;
+
+        const endCoordinates = `${DataCliente?.Latitud},${DataCliente?.Longitud}`;
+
+        const googleMapsUrl = `https://www.google.com/maps/dir/${startCoordinates}/${endCoordinates}`;
+
+        window.open(googleMapsUrl, "_blank");
+      },
+      (error) => {
+        console.error("Error al obtener la ubicación:", error);
+        // Manejar el error si la geolocalización falla
+      }
+    );
+  };
+
+  return (
+    <>
+      <Navar />
+      <div className="containerConsultas">
+        <div className="containerFormBtn">
+          <div className="containerdatas">
+            <h1 className="ContainerConsultaTitle">Consulta General</h1>
+            <section className="containerbtnselection">
+              <button
+                className={`ConsultaSolicitud ${
+                  selectsearch === "Medidor" ? "active red-background" : ""
+                }`}
+                onClick={() => handleSelectSearch("Medidor")}
+              >
+                <img src="/assets/medidor.png" alt="" />
+              </button>
+              <button
+                className={`ConsultaSolicitud ${
+                  selectsearch === "Usuario" ? "active red-background" : ""
+                }`}
+                onClick={() => handleSelectSearch("Usuario")}
+              >
+                <FaUserAlt className="iconuserbtnselection" />
+              </button>
+            </section>
+            <div className="containerFormConsulta">
+              <div noValidate autoComplete="off" className="formConsulta">
+                <input
+                  className="inputformconsulta"
+                  type="text"
+                  id="outlined-basic"
+                  placeholder="Numero Cliente ó Medidor"
+                  onChange={(e) => setCliente(e.target.value)}
+                />
+              </div>
+            </div>
+            <section
+              className={
+                isLoading == true
+                  ? "containerdataformloadin"
+                  : "containerdataform"
+              }
+            >
+              {DataCliente ? (
+                <>
+                  <article className="dataform-title">
+                    <h3>Datos General</h3>
+                  </article>
+                  <article className="dataformTrafo">
+                    <p>
+                      <strong>Cliente:</strong>
+                    </p>
+                    <span className="dto_cliente"> {DataCliente?.Cliente}</span>
+                  </article>
+                  <article>
+                    <p className="dto_perfil">
+                      <strong>Nombre:</strong>
+                    </p>
+                    <span>{DataCliente?.Nombre}</span>
+                  </article>
+                  <article>
+                    <p className="dto_perfil">
+                      <strong>Dirección:</strong>
+                    </p>
+                    <span>{DataCliente?.Direccion}</span>
+                  </article>
+                  <article className="dataform">
+                    <article className="dataformTrafo">
+                      <p>
+                        <strong>Ciclo:</strong>
+                      </p>
+                      <span>{DataCliente?.Ciclo}</span>
+                    </article>
+                    <article className="dataformTrafo">
+                      <p>
+                        <strong>Trafo:</strong>
+                      </p>
+                      <span>{DataCliente?.Tranformador}</span>
+                    </article>
+                  </article>
+                  <article className="dataform">
+                    <p>
+                      <strong>Ruta-Lectura:</strong>
+                    </p>
+                    <span>{DataCliente?.RutaLectura}</span>
+                  </article>
+                  <article className="dataform">
+                    <p>
+                      <strong>Medidor:</strong>
+                    </p>
+                    <span>{DataCliente?.DMedidor}</span>
+                  </article>
+                  <article className="dataform">
+                    <p>
+                      <strong>Facturación :</strong>
+                    </p>
+                    <span>{DataCliente?.Facturacion}</span>
+                  </article>
+                  <article className="dataform">
+                    <p>
+                      <strong>Anterior:</strong>
+                    </p>
+                    <span>{DataCliente?.Anterior}</span>
+                  </article>
+                  <article className="dataform">
+                    <p>
+                      <strong>Posterior:</strong>
+                    </p>
+                    <span>{DataCliente?.Posterior}</span>
+                  </article>
+                  <article className="dataform">
+                    <p>
+                      <strong>Gps:</strong>
+                    </p>
+                    <span>
+                      {DataCliente?.Latitud + "," + DataCliente?.Longitud}
+                    </span>
+                    <PiMapPinLineDuotone
+                      className="iconmapform"
+                      onClick={handleMapClick}
+                    />
+                  </article>
+                </>
+              ) : (
+                <p>{isLoading == true ? "" : msg}</p>
+              )}
+              {isLoading && (
+                <img
+                  className="gitLoading"
+                  src="../assets/loading.gif"
+                  alt="Cargando..."
+                />
+              )}
+            </section>
+          </div>
+
+          <section className="containerMapa">
+            <MapContainer
+              center={{ lat: "8.100347", lng: "-72.913427" }}
+              zoom={7}
+            >
+              <TileLayer
+                attribution='<a href="https://www.openstreetmap.org/copyright"></a>'
+                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+              />
+              <Marker position={DataGps.Gps} icon={IconLocation}>
+                <Popup>{`Cliente: ${DataCliente.Cliente}`}</Popup>
+              </Marker>
+            </MapContainer>
+          </section>
+        </div>
+      </div>
+    </>
+  );
+}
+
+export default PegConsulta;

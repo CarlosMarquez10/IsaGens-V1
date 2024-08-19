@@ -1,0 +1,223 @@
+.containerCard {
+  width: 50%;
+  min-height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 1px 3px 3px 2px grey;
+  border-radius: 20px;
+  transition: all 0.25s;
+  box-sizing: border-box;
+}
+
+.containerCard:hover {
+  border: none;
+  transform: scale(1.1);
+  border-top: solid 0.3px rgb(244, 97, 97);
+  box-shadow: 1px 4px 4px 2px rgb(244, 97, 97);
+}
+.containerCar {
+  width: 95%;
+  height: 95%;
+  /* background: grey; */
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.containerImg {
+  width: 90px;
+  height: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.imgmedidormonofase {
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+}
+
+.containerDatoCard {
+  width: 70%;
+  height: 100px;
+  display: flex;
+  padding: 3px;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-decoration: none;
+}
+
+.containerDatoCard:hover {
+  color: red !important;
+}
+
+.titleCard {
+  color: rgb(226, 8, 8);
+  font-size: 25px;
+  font-weight: 550;
+}
+
+.DescripcionCard {
+  margin: 5px;
+  padding: 2px;
+  font-size: 1rem;
+  color: black;
+}
+
+.imgsearchuser {
+  margin-top: 20px;
+  width: 90%;
+  height: 90%;
+  border-radius: 10px;
+}
+
+
+
+/* Estilos para pantallas de celular */
+@media (max-width: 760px) {
+  /* Estilos específicos para pantallas de celular */
+  .containerTarjeta {
+    width: 100vw;
+    height: 93vh;
+    padding: 50px 0px 30px 0px; /* Ajusta el padding inferior si es necesario */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* Ajusta el contenido al principio del contenedor */
+    align-items: center;
+    background: linear-gradient(white, #ffffff);
+    color: black;
+    overflow-y: auto; /* Habilitar scroll vertical */
+    overflow-x: hidden; /* Deshabilitar scroll horizontal */
+    box-sizing: border-box;
+  }
+
+  .imgsearchuser {
+    width: 100%;
+    height: 70%;
+    border-radius: 10px;
+    margin-bottom: 20px;
+  }
+
+  .containerCard {
+    width: 55%;
+    min-height: 130px;
+    margin-bottom: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 1px 3px 3px 2px grey;
+    border-radius: 20px;
+    transition: all 0.25s;
+    box-sizing: border-box;
+  }
+
+  .containerCard:hover {
+    border: none;
+    transform: translateY(-10px);
+    border-top: solid 0.3px rgb(244, 97, 97);
+    box-shadow: 1px 4px 4px 2px rgb(244, 97, 97);
+  }
+
+  .containerImg {
+    width: 80px;
+    height: 100px;
+  }
+
+
+  .containerCar {
+    width: 95%;
+    height: 95%;
+    /* background: grey; */
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  /* Añadir padding inferior al contenedor de tarjetas */
+  .containerTarjeta {
+    padding-bottom: 50px; /* Ajusta este valor según sea necesario */
+  }
+
+  /* Añadir margen inferior al último elemento */
+  .containerTarjeta .containerCard:last-child {
+    margin-bottom: 50px; /* Ajusta este valor según sea necesario */
+  }
+}
+
+
+/* Estilos para pantallas de PC de escritorio de 24 pulgadas */
+@media only screen and (min-width: 1025px) and (max-width: 1200px) {
+  .containerCard {
+    width: 200px;
+    margin-right: 40px;
+    height: 370px;
+  }
+
+  .containerCar {
+    flex-direction: column;
+    justify-content: space-around;
+  }
+
+  .containerImg {
+    width: 175px;
+    height: 200px;
+  }
+
+  .containerDatoCard {
+    width: 100%;
+    height: 100%;
+  }
+
+  .containerDatoCard p {
+    text-align: center;
+    margin: 5px 0px 5px 0px;
+  }
+
+  .containerCard:hover {
+    transform: translateY(-30px) !important;
+  }
+}
+
+/* Estilos para pantallas de 1080p */
+@media only screen and (min-width: 1921px) {
+}
+
+/* Estilos para pantallas de televisores */
+@media only screen and (min-width: 1201px) and (max-width: 1920px) {
+  .containerCard {
+    width: 100px;
+    margin-right: 40px;
+    height: 100px;
+  }
+
+  .titleCard{
+    font-size: 14px;
+  }
+
+  .containerCar {
+    flex-direction: column;
+    justify-content: space-around;
+  }
+
+  .containerImg {
+    width: 40px;
+    height: 45px;
+  }
+
+  .containerDatoCard {
+    width: 100%;
+    height: 100%;
+  }
+
+  .containerDatoCard p {
+    text-align: center;
+    margin: 5px 0px 5px 0px;
+  }
+
+  .containerCard:hover {
+    transform: scale(1.1);
+  }
+}

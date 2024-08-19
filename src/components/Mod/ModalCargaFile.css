@@ -1,0 +1,30 @@
+
+.conatainer-componente-modal{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-self: center;
+   
+}
+.btn-subir-file{
+    width: 30%;
+    margin: 10px 0px 10px 0px;
+}
+
+.cont-title-subida-file{
+    width: 100%;
+    height: 20%;
+    margin-bottom: 20px;
+    padding: 0px 0px 0px 10px;
+    background: red;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.title-subida-file{
+    font-size: 1.3rem;
+    color: white;
+
+}
