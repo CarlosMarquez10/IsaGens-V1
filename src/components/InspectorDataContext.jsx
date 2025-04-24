@@ -1,53 +1,117 @@
 import React, { createContext, useState, useContext, useEffect } from "react";
 
-const InspectorDataContext = createContext();
+// Crear el contexto para los datos del inspector
+export const InspectorDataContext = createContext();
 
+// Hook personalizado para utilizar el contexto
 export const useInspectorData = () => {
-  return useContext(InspectorDataContext);
+  const context = useContext(InspectorDataContext);
+  if (!context) {
+    throw new Error(
+      "useInspectorData debe ser usado dentro de un InspectorDataProvider"
+    );
+  }
+  return context;
 };
 
+// Proveedor de datos para el contexto del inspector
 export const InspectorDataProvider = ({ children }) => {
   const [inspectorData, setInspectorData] = useState(null);
   const [totalInspProgramadas, setTotalInspProgramadas] = useState(0);
   const [totalInspEjecutadas, setTotalInspEjecutadas] = useState(0);
-//https://74pbcspn-3000.use2.devtunnels.ms
-  const fetchInspectorData = () => {
-    fetch(`https://74pbcspn-3000.use2.devtunnels.ms/api/files/jsonGeneral`)
-      .then((response) => response.json())
-      .then((data) => {
-        setInspectorData(data);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-        // Calcula los totales
-        let totalProgramadas = 0;
-        let totalEjecutadas = 0;
+  const calculateTotals = (data) => {
+    let totalProgramadas = 0;
+    let totalEjecutadas = 0;
 
-        for (const regional in data) {
-          if (data[regional].cantidadInspGeneral) {
-            const totalesObj = data[regional].cantidadInspGeneral.find(semana => semana.totales);
-            if (totalesObj) {
-              totalProgramadas += totalesObj.totales || 0;
-            }
-          }
-
-          if (data[regional].cantidadInspEjecutadas) {
-            totalEjecutadas += data[regional].cantidadInspEjecutadas;
+    try {
+      Object.entries(data).forEach(([_, regionalData]) => {
+        if (regionalData.cantidadInspGeneral) {
+          const totalesObj = regionalData.cantidadInspGeneral.find(
+            (semana) => semana.totales
+          );
+          if (totalesObj?.totales) {
+            totalProgramadas += Number(totalesObj.totales);
           }
         }
 
-        setTotalInspProgramadas(totalProgramadas);
-        setTotalInspEjecutadas(totalEjecutadas);
-      })
-      .catch((error) => {
-        console.error("Error fetching the inspector profile:", error);
+        if (regionalData.cantidadInspEjecutadas) {
+          totalEjecutadas += Number(regionalData.cantidadInspEjecutadas);
+        }
       });
+
+      return { totalProgramadas, totalEjecutadas };
+    } catch (err) {
+      console.error("Error calculating totals:", err);
+      throw new Error("Error al calcular los totales");
+    }
+  };
+
+  const fetchInspectorData = async () => {
+    try {
+      setIsLoading(true);
+      setError(null);
+    
+      const response = await fetch(
+        `https://74pbcspn-3000.use2.devtunnels.ms/api/files/jsonGeneral`,
+        {
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error(`Error HTTP: ${response.status}`);
+      }
+
+      const data = await response.json();
+
+      if (!data || typeof data !== "object") {
+        throw new Error("Formato de datos inválido");
+      }
+
+      const { totalProgramadas, totalEjecutadas } = calculateTotals(data);
+
+      setInspectorData(data);
+      setTotalInspProgramadas(totalProgramadas);
+      setTotalInspEjecutadas(totalEjecutadas);
+    } catch (error) {
+      setError(error.message);
+      console.error("Error fetching inspector data:", error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  // Función para recargar los datos manualmente
+  const refreshData = () => {
+    fetchInspectorData();
   };
 
   useEffect(() => {
-    fetchInspectorData(); // Llama a la función de contexto para hacer la petición al montar el componente
-  }, []); // Empty dependency array ensures this runs only once
+    fetchInspectorData();
+
+    // Opcional: Actualizar datos cada cierto tiempo
+    const interval = setInterval(fetchInspectorData, 300000); // 5 minutos
+
+    return () => clearInterval(interval);
+  }, []);
 
   return (
-    <InspectorDataContext.Provider value={{ inspectorData, totalInspProgramadas, totalInspEjecutadas }}>
+    <InspectorDataContext.Provider
+      value={{
+        inspectorData,
+        totalInspProgramadas,
+        totalInspEjecutadas,
+        isLoading,
+        error,
+        refreshData,
+      }}
+    >
       {children}
     </InspectorDataContext.Provider>
   );

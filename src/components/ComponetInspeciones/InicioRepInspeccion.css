@@ -487,6 +487,11 @@
   }
 }
 
+.title-Insp{
+  color: black;
+  font-size: 20px;
+}
+
 @media only screen and (min-width: 1201px) and (max-width: 1920px) {
   /* Estilos para pantallas de aproximadamente 20" */
   .navarmenu {

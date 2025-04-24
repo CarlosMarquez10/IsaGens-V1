@@ -11,9 +11,9 @@
   background: #f8f9fa;
   overflow-y: auto;
 }
-.containerFormBtn{
+.containerFormBtn {
   width: 100vw;
-
+  /* background-color: pink; */
 }
 .resultsSection {
   width: 90%;
@@ -49,14 +49,14 @@
   background-color: red;
 }
 
-.dto_perfil{
+.dto_perfil {
   display: flex;
   flex-direction: row;
   justify-content: left;
   align-items: center;
 }
 
-.dto_cliente{
+.dto_cliente {
   padding-left: 0.5rem;
 }
 
@@ -76,7 +76,7 @@
   justify-content: center;
 }
 
-.contDatosEntrada{
+.contDatosEntrada {
   width: 700px;
   margin-top: 300px;
   /* height: 400px */
@@ -105,12 +105,14 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 1002;
 }
 
 .formConsulta {
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 1002;
 }
 
 .inputformconsulta {
@@ -153,8 +155,6 @@
   overflow-y: auto;
   scrollbar-width: none;
 }
-
-
 
 .containerdataform p {
   color: #202020;
@@ -216,16 +216,63 @@
 .dataformTrafo span {
   margin-right: 30px;
 }
+.loading-indicator {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2000; /* Asegúrate de que esté por encima de otros elementos */
+  background-color: rgba(0, 0, 0, 0.8); /* Fondo semitransparente */
+  color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  text-align: center;
+}
+
+/* Estilos existentes */
+.containerdatas {
+  position: relative;
+}
+
+.datalbl {
+  position: absolute;
+  top: 9px;
+  left: 33px;
+  width: 80%;
+  height: 100%;
+  z-index: 1000;
+  /* background: pink; */
+  display: flex;
+  justify-content: center;	
+  align-items: center;
+  /* transition: z-index 0.01s ease; */
+}
+
+.datalbl.behind {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 1px;
+  height: 1px;
+  z-index: -1; 
+}
 
 .containerbtnselection {
   width: 200px;
   height: 40px;
+  position: relative;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
-  margin: 15px 0px 15px 0px;
+  margin: 15px 0px 35px 0px;
+  /* background: pink; */
+  /* z-index: 100;  */
 }
+
+
+
+
 
 .ConsultaSolicitud {
   color: white;
@@ -239,14 +286,25 @@
   box-shadow: 0px 1px 1px red;
 }
 
+/* .containerbtnselection {
+  width: 200px;
+  height: 40px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  margin: 15px 0px 15px 0px;
+  background: pink;
+} */
+
 .ConsultaSolicitud img {
   width: 35px;
   height: 35px;
 }
 
 .iconuserbtnselection {
-  width: 25px;
-  height: 25px;
+  width: 30px;
+  height: 30px;
   color: #202020;
 }
 
@@ -284,7 +342,6 @@
     justify-content: start;
     overflow-y: auto;
     scrollbar-width: none;
-    
   }
 
   .resultsSection {
@@ -297,7 +354,7 @@
     height: 160px;
   }
 
-  .containerdatas{
+  .containerdatas {
     height: auto;
     margin-top: 2px;
     margin-bottom: 0px;
@@ -328,8 +385,6 @@
     align-items: center;
     position: relative;
   }
-
-
 
   .containerdataform {
     width: 93vw;
@@ -394,11 +449,26 @@
     margin-left: 10px;
     color: red;
   }
-
-
-
 }
 
+.containerMapa {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.backgroundVideo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1000; /* Asegura que el video esté detrás de otros elementos */
+}
+
+.containerMapa .leaflet-container {
+  position: relative;
+  z-index: -1; /* Asegura que el mapa esté encima del video */
+  /* display: none; */
+}
 
 /* Estilos para pantallas de portátil */
 @media only screen and (min-width: 760px) and (max-width: 1199px) {
@@ -481,8 +551,6 @@
   }
 }
 
-
-
 /* Estilos para pantallas de televisores */
 @media only screen and (min-width: 1201px) and (max-width: 1920px) {
   .containerConsultas {
@@ -536,5 +604,75 @@
     overflow: hidden;
     overflow-y: scroll;
     scrollbar-width: none;
+  }
+}
+
+/* Define la animación de rebote con cambio de sombra */
+@keyframes bounce-shadow {
+  0%, 100% {
+    transform: translateY(-50%) scale(1);
+    box-shadow: 0 0 5px rgba(42, 114, 248, 0.3);
+    /* transform: scale(0.95); */
+  }
+  50% {
+    transform: translateY(-50%) scale(1.5);
+    box-shadow: 0 0 15px rgba(240, 14, 14, 0.719);
+    /* transform: scale(1.5); */
+  }
+}
+
+/* Aplica la animación al ícono de búsqueda */
+.searchIcon {
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #757575;
+  background: transparent;
+  border-radius: 20%;
+  animation: bounce-shadow 2s infinite;
+}
+
+
+/* Estilos base para los botones */
+.ConsultaSolicitud {
+  background-color: transparent; /* Sin fondo blanco */
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  /* Opcional: padding, border-radius, etc. */
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+}
+
+/* Efecto hover (opcional) */
+.ConsultaSolicitud:hover {
+  background-color: rgba(255, 0, 0, 0.1);
+}
+
+/* Efecto al presionar el botón */
+.ConsultaSolicitud:active {
+  transform: scale(1);
+}
+
+/* Estado activo: fondo rojo con animación de rebote */
+.ConsultaSolicitud.active {
+  background-color: red;
+  animation: bounce 0.5s;
+}
+
+/* Animación de rebote */
+@keyframes bounce {
+  0% {
+    transform: scale(0.95);
+  }
+  50% {
+    transform: scale(1.5);
+  }
+  100% {
+    transform: scale(1);
   }
 }

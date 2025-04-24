@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 
 import "../PruebaMedidor/PruebaMedidor.css";
 
-
 function Consulta() {
   return (
     <>
@@ -16,7 +15,6 @@ function Consulta() {
               className="imgsearchuser"
             />
           </div>
-          {/* Consulta */}
           <Link to="/Consult" className="containerDatoCard">
             <p className="titleCard">Consultas</p>
             <p className="DescripcionCard">

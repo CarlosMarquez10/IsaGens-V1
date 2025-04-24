@@ -1,0 +1,213 @@
+import { useState, useEffect } from "react";
+import { FaUserAlt } from "react-icons/fa";
+import ReactPlayer from "react-player";
+// import './styles.css'; // Asegúrate de importar el archivo CSS
+
+const SearchForm = ({ onSearch }) => {
+  // ...estados existentes
+  const [Cliente, setCliente] = useState("");
+  const [selectsearch, setSelectsearch] = useState("");
+  const [videoClicked, setVideoClicked] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+
+  const handleSelectSearch = (value) => {
+    if (Cliente.trim() === "") {
+      alert("Por favor, ingrese un número de cliente o medidor.");
+      return;
+    }
+    setSelectsearch(value);
+    onSearch(value, Cliente);
+  };
+
+  const handleVideoPlay = () => {
+    setVideoClicked(true);
+    setIsLoading(true);
+  };
+
+  useEffect(() => {
+    if (videoClicked) {
+      const timer = setTimeout(() => {
+        setIsLoading(false);
+      }, 50);
+      return () => clearTimeout(timer);
+    }
+  }, [videoClicked]);
+
+  return (
+    <div className="containerFormBtn">
+      <div className="containerdatas" style={{ position: 'relative' }}>
+        <h1 className="ContainerConsultaTitle">Consulta General</h1>
+
+        {/* Indicador de carga */}
+        {isLoading && (
+          <div className="loading-indicator">
+           Cargando...
+          </div> 
+        )}
+
+        {/* Contenedor del video */}
+        <div className={`videoOverlay ${videoClicked ? 'behind' : ''}`}>
+          <ReactPlayer
+            url="https://www.youtube.com/watch?v=ZfKN5BrbcQI"
+            playing={videoClicked}
+            controls={true}
+            width="80%"
+            height="165px"
+            muted={true}
+            onPlay={handleVideoPlay}
+            style={{ pointerEvents: 'auto', opacity: 0.001}}
+          />
+        </div>
+
+
+        {/* Botones debajo del video */}
+        <section className="containerbtnselection">
+          <button
+            className={`ConsultaSolicitud ${
+              selectsearch === "Medidor" ? "active red-background" : ""
+            }`}
+            onClick={() => handleSelectSearch("Medidor")}
+          >
+            <img src="/assets/medidor.png" alt="" />
+          </button>
+          <button
+            className={`ConsultaSolicitud ${
+              selectsearch === "Usuario" ? "active red-background" : ""
+            }`}
+            onClick={() => handleSelectSearch("Usuario")}
+          >
+            <FaUserAlt className="iconuserbtnselection" />
+          </button>
+        </section>
+
+        <div className="containerFormConsulta">
+          <div noValidate autoComplete="off" className="formConsulta">
+            <input
+              className="inputformconsulta"
+              type="text"
+              id="outlined-basic"
+              placeholder="Número Cliente ó Medidor"
+              onChange={(e) => setCliente(e.target.value)}
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default SearchForm;
+
+
+
+VERSION 2 //////////////////////////
+
+
+import { useState, useEffect } from "react";
+import { FaUserAlt } from "react-icons/fa";
+import ReactPlayer from "react-player";
+
+// Array de videos disponibles
+const videosCollection = [
+  "https://www.youtube.com/watch?v=ZfKN5BrbcQI",
+  "https://www.youtube.com/watch?v=NHYpGAkQN9U",
+  "https://www.youtube.com/watch?v=aQ47HQBiRjU"
+];
+
+const getRandomVideo = () => {
+  const randomIndex = Math.floor(Math.random() * videosCollection.length);
+  return videosCollection[randomIndex];
+};
+
+const SearchForm = ({ onSearch }) => {
+  const [Cliente, setCliente] = useState("");
+  const [selectsearch, setSelectsearch] = useState("");
+  const [videoClicked, setVideoClicked] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [currentVideo, setCurrentVideo] = useState(getRandomVideo());
+
+  const handleSelectSearch = (value) => {
+    if (Cliente.trim() === "") {
+      alert("Por favor, ingrese un número de cliente o medidor.");
+      return;
+    }
+    setSelectsearch(value);
+    onSearch(value, Cliente);
+  };
+
+  const handleVideoPlay = () => {
+    setVideoClicked(true);
+    setIsLoading(true);
+    // Cambia el video cuando se reproduce
+    setCurrentVideo(getRandomVideo());
+  };
+
+  useEffect(() => {
+    if (videoClicked) {
+      const timer = setTimeout(() => {
+        setIsLoading(false);
+      }, 50);
+      return () => clearTimeout(timer);
+    }
+  }, [videoClicked]);
+
+  return (
+    <div className="containerFormBtn">
+      <div className="containerdatas" style={{ position: 'relative' }}>
+        <h1 className="ContainerConsultaTitle">Consulta General</h1>
+
+        {/* {isLoading && (
+          <div className="loading-indicator">
+            Cargando...
+          </div>
+        )} */}
+
+        <div className={`videoOverlay ${videoClicked ? 'behind' : ''}`}>
+          <ReactPlayer
+            url={currentVideo}
+            playing={videoClicked}
+            controls={true}
+            width="80%"
+            height="165px"
+            muted={true}
+            onPlay={handleVideoPlay}
+            style={{ pointerEvents: 'auto', opacity: 0.001}}
+          />
+        </div>
+
+        <section className="containerbtnselection">
+          <button
+            className={`ConsultaSolicitud ${
+              selectsearch === "Medidor" ? "active red-background" : ""
+            }`}
+            onClick={() => handleSelectSearch("Medidor")}
+          >
+            <img src="/assets/medidor.png" alt="" />
+          </button>
+          <button
+            className={`ConsultaSolicitud ${
+              selectsearch === "Usuario" ? "active red-background" : ""
+            }`}
+            onClick={() => handleSelectSearch("Usuario")}
+          >
+            <FaUserAlt className="iconuserbtnselection" />
+          </button>
+        </section>
+
+        <div className="containerFormConsulta">
+          <div noValidate autoComplete="off" className="formConsulta">
+            <input
+              className="inputformconsulta"
+              type="text"
+              id="outlined-basic"
+              placeholder="Número Cliente ó Medidor"
+              onChange={(e) => setCliente(e.target.value)}
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default SearchForm;

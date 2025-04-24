@@ -1,4 +1,151 @@
-.conatinerConstrution {
+/* Estilos para el contenedor principal */
+.containerTiempoConsulta {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* Estilos para el video de fondo */
+.backgroundVideo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+}
+
+.backgroundVideo video {
+  object-fit: cover;
+}
+
+.backgroundVideo iframe {
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+/* Overlay semitransparente */
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Ajusta el color y la opacidad según necesites */
+  z-index: -1;
+}
+
+/* Estilos para el contenido */
+.contentWrapper {
+  position: relative;
+  z-index: 1;
+  padding: 20px;
+  color: rgb(13, 12, 12); /* Asegura que el texto sea legible */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+h2 {
+  font-size: 28px;
+  color: white;
+  font-weight: bold;
+}
+
+.msgerror,
+.msgProc,
+.msgbn {
+  width: 100%;
+  margin-bottom: 1.5rem;
+  padding: 10px;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.msgerror {
+  /* background-color: red; */
+  background-color: green;
+}
+
+.msgProc {
+  background-color: orange;
+}
+
+.msgbn {
+  background-color: green;
+}
+
+.form-container {
+  max-width: 400px;
+  width: 100%;
+  padding: 20px;
+  margin-bottom: 2rem;
+  background-color: rgba(0, 0, 0, 0.7); /* Fondo semitransparente */
+  border-radius: 10px;
+}
+
+.form-container label {
+  width: 100%;
+  margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.form-container input,
+.form-container select {
+  width: 100%;
+  padding: 10px;
+  margin-top: 0.3rem;
+  font-size: 1rem;
+  color: black;
+  border: none;
+  border-radius: 5px;
+}
+
+.btnSolicitud {
+  margin-top: 1rem;
+  padding: 10px 20px;
+  background-color: #4caf50;
+  border: none;
+  color: white;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.btnSolicitud:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.spansolicitud {
+  color: rgb(14, 14, 14);
+  font-weight: 400;
+}
+
+.lbl-solicitud{
+  color: white;
+}
+
+/* Estilos responsivos */
+@media only screen and (max-width: 760px) {
+  .form-container {
+    max-width: 90%;
+  }
+
+  h2 {
+    font-size: 24px;
+  }
+}
+
+
+
+
+
+/* .conatinerConstrution {
   width: 100vw;
   height: 100vh;
   padding: 20px;
@@ -86,4 +233,4 @@ h1 {
     height: 100vh;
     margin-bottom: 10px;
   }
-}
+} */

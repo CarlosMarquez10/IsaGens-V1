@@ -132,8 +132,8 @@ const InicioRepInspeccion = () => {
               <img className="imginicioperfil" src="/assets/inmel.ico" alt="" />
             </div>
             <div className="contnombreperfil">
-              <h2>Inspecciónes de </h2>
-              <h2>Campo</h2>
+              <h2 className="title-Insp">Inspecciónes de </h2>
+              <h2 className="title-Insp">Campo</h2>
             </div>
           </div>
         </div>

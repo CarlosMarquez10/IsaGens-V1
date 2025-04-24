@@ -3,6 +3,7 @@ import Navar from "../Navar";
 import { FaDownload } from "react-icons/fa6";
 import "./FromConsecutivo.css";
 import { useAuth } from "../../context/authContext";
+import ReactPlayer from "react-player";
 
 const FromConsecutivo = () => {
   const { user } = useAuth();
@@ -17,11 +18,15 @@ const FromConsecutivo = () => {
   const [successMessage, setSuccessMessage] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
+
   const handleGetConsecutivo = async () => {
     try {
-      const response = await fetch("https://74pbcspn-3007.use2.devtunnels.ms/Consulta", {
-        method: "GET",
-      });
+      const response = await fetch(
+        "https://74pbcspn-3007.use2.devtunnels.ms/ConsultaConsecutivo",
+        {
+          method: "GET",
+        }
+      );
 
       if (!response.ok) {
         throw new Error("Error al obtener el consecutivo");
@@ -51,13 +56,16 @@ const FromConsecutivo = () => {
       RECIBIDO: recibido,
     };
     try {
-      const response = await fetch("https://74pbcspn-3007.use2.devtunnels.ms/DatosSolicitudes", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(newRow),
-      });
+      const response = await fetch(
+        "https://74pbcspn-3007.use2.devtunnels.ms/DatosSolicitudes",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(newRow),
+        }
+      );
 
       if (!response.ok) {
         throw new Error("Error al agregar la correspondencia");
@@ -92,9 +100,12 @@ const FromConsecutivo = () => {
 
   const handleDownload = async () => {
     try {
-      const response = await fetch("https://74pbcspn-3007.use2.devtunnels.ms/DescargarArchivo", {
-        method: "GET",
-      });
+      const response = await fetch(
+        "https://74pbcspn-3007.use2.devtunnels.ms/DescargarArchivo",
+        {
+          method: "GET",
+        }
+      );
 
       if (!response.ok) {
         throw new Error("Error al descargar el archivo");
@@ -143,48 +154,52 @@ const FromConsecutivo = () => {
     user.email.split("@")[0]
   );
 
+
+
   return (
     <>
-    <div className="navCons">
-    <Navar />
-    </div>
-      
+      <div className="navCons">
+        <Navar />
+      </div>
+
       <div className="container">
-        <header>
-          <img src="/assets/inmel.png" alt="Inmel Logo" />
-          <h1>CONTROL DE CONSECUTIVOS DE CORRESPONDENCIA ENVIADA</h1>
-          <h2>CTF-A001-21 REV. 0</h2>
-        </header>
-        <div className="navConsecutivo">
-          {isAuthorizedToExport && (
-            <button
-              className="btnConsecutivoExportar"
-              type="button"
-              onClick={handleDownload}
-              disabled={isLoading}
+        
+        <div className="contentWrapper">
+          <header>
+            <img src="/assets/inmel.png" alt="Inmel Logo" />
+            <h1>CONTROL DE CONSECUTIVOS DE CORRESPONDENCIA ENVIADA</h1>
+            <h2>CTF-A001-21 REV. 0</h2>
+          </header>
+          <div className="navConsecutivo">
+            {isAuthorizedToExport && (
+              <button
+                className="btnConsecutivoExportar"
+                type="button"
+                onClick={handleDownload}
+                disabled={isLoading}
+              >
+                <FaDownload />
+              </button>
+            )}
+          </div>
+          <div className="contendorfrom">
+            {isLoading && <div className="loading">Procesando...</div>}
+            {successMessage && (
+              <div className="success-message">{successMessage}</div>
+            )}
+            {error && <div className="error-message">{error}</div>}
+            {consecutivo && (
+              <div className="consecutivo-message">
+                Nuevo Consecutivo: {consecutivo}
+              </div>
+            )}
+            <form
+              className="correspondenceForm"
+              id="correspondenceForm"
+              onSubmit={handleSubmit}
             >
-              <FaDownload />
-            </button>
-          )}
-          {/* <button onClick={handleGetConsecutivo}>Obtener Consecutivo</button> */}
-        </div>
-        <div className="contendorfrom">
-          {isLoading && <div className="loading">Procesando...</div>}
-          {successMessage && (
-            <div className="success-message">{successMessage}</div>
-          )}
-          {error && <div className="error-message">{error}</div>}
-          {consecutivo && (
-            <div className="consecutivo-message">
-              Nuevo Consecutivo: {consecutivo}
-            </div>
-          )}
-          <form
-            className="correspondenceForm"
-            id="correspondenceForm"
-            onSubmit={handleSubmit}
-          >
-            <input
+
+<input
               type="date"
               value={fecha}
               onChange={(e) => setFecha(e.target.value)}
@@ -235,8 +250,9 @@ const FromConsecutivo = () => {
               disabled={isLoading}
             >
               Solicitar Consecutivo
-            </button>
-          </form>
+            </button>  
+            </form>
+          </div>
         </div>
       </div>
     </>
@@ -244,3 +260,6 @@ const FromConsecutivo = () => {
 };
 
 export default FromConsecutivo;
+
+
+

@@ -8,6 +8,8 @@ import Consecutivos from "./Card/Consecutivos";
 import Inspecciones from "./Card/ReporteInspecciones";
 import { Habilitaciones } from "./Card/Habilitaciones";
 import { CardConsultaPagos } from "./Card/CardConsultaPagos";
+import { ReporteNovedad } from "./Card/ReporteNovedad";
+import  PruebaMoto  from "./Card/PruebaMotos";
 
 export function Home() {
   const { logout, loading } = useAuth();
@@ -30,6 +32,8 @@ export function Home() {
         <Inspecciones />
         <Habilitaciones />
         <CardConsultaPagos />
+        <ReporteNovedad />
+        <PruebaMoto/>
       </div>
     </>
   );

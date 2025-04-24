@@ -18,7 +18,10 @@ import PerfilInspectors from "./components/ComponetInspeciones/PerfilInspector";
 import { InspectorDataProvider } from "./components/InspectorDataContext"; // Importa el InspectorDataProvider
 import { InspectorProviderPerfil } from "./components/InspectorContext";
 import { Habilitacion09H } from "./components/Habilitacion/Habilitacion09H";
-import {ConsultaPagos} from "./components/ConsultaPagos/ConsultaPagos";
+import { PruebasMotosInmel } from "./components/PruebasMotos/PruebasMotosInmel";
+import { ConsultaPagos } from "./components/ConsultaPagos/ConsultaPagos";
+import Novedad from "./components/Novedad/Novedad";
+// import mantenimientoInfo from "./components/matenimiento/mantenimiento.jsx"
 function App() {
   return (
     <div className="containerroot">
@@ -117,6 +120,16 @@ function App() {
                   </ProtectedRoute>
                 }
               />
+
+              <Route
+                path="/PruebasMotos"
+                element={
+                  <ProtectedRoute>
+                    <PruebasMotosInmel />
+                  </ProtectedRoute>
+                }
+              />
+
               <Route
                 path="/PerfilInspector"
                 element={
@@ -139,6 +152,23 @@ function App() {
                 element={
                   <ProtectedRoute>
                     <ConsultaPagos />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/Novedad"
+                element={
+                  <ProtectedRoute>
+                    <Novedad />
+                  </ProtectedRoute>
+                }
+              />
+
+              <Route
+                path="/mantenimiento"
+                element={
+                  <ProtectedRoute>
+                    <mantenimientoInfo />
                   </ProtectedRoute>
                 }
               />

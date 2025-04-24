@@ -38,6 +38,13 @@ const SearchResults = ({ data, isLoading, msg, onMapClick }) => {
                   </p>
                   <span>{data.Ciclo}</span>
                 </article>
+
+                <article className="dataformTrafo">
+                  <p>
+                    <strong>Seccion:</strong>
+                  </p>
+                  <span>{data.Seccion}</span>
+                </article> 
                 <article className="dataformTrafo">
                   <p>
                     <strong>Trafo:</strong>
@@ -62,6 +69,24 @@ const SearchResults = ({ data, isLoading, msg, onMapClick }) => {
                   <strong>Facturación :</strong>
                 </p>
                 <span>{data.Facturacion}</span>
+              </article>
+              <article>
+                <p  className="dto_perfil">
+                  <strong>Correo :</strong>
+                </p>
+                <span>{data.Ddata}</span>
+              </article>
+              <article className="dataform">
+                <p>
+                  <strong>Area :</strong>
+                </p>
+                <span>{data.Area}</span>
+              </article>
+              <article className="dataform">
+                <p>
+                  <strong>Telefono :</strong>
+                </p>
+                <span>{data.Telefono}</span>
               </article>
               <article className="dataform">
                 <p>

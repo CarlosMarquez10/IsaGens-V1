@@ -125,6 +125,7 @@ h1 {
   .navarmenu {
     width: 100vw;
     height: 80px;
+    z-index: 2000;
   }
 
   .navarmenu svg {
