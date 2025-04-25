@@ -34,18 +34,27 @@ const OilChangeUpload = () => {
 
     try {
       const formData = new FormData();
-      formData.append('file', file);
+      formData.append('archivoAceite', file);
 
-      // Aquí irá la llamada a la API
-      const response = await fetch('/api/upload/oil-change', {
+      console.log('Enviando archivo:', file.name, 'tipo:', file.type);
+
+      const response = await fetch('https://wz9h007p-3020.use2.devtunnels.ms/api/archivos/subir-aceite', {
         method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+        },
         body: formData,
       });
 
+      console.log('Respuesta del servidor:', response.status, response.statusText);
+
       if (!response.ok) {
-        throw new Error('Error al subir el archivo');
+        const errorData = await response.json().catch(() => null);
+        console.error('Error detallado:', errorData);
+        throw new Error(errorData?.message || `Error al subir el archivo: ${response.status} ${response.statusText}`);
       }
 
+      const responseData = await response.json();
       setSuccess('Archivo subido exitosamente');
       setFile(null);
       e.target.reset();
