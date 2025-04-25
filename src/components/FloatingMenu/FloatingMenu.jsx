@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import FileUploadView from '../FileUpload/FileUploadView';
 import DownloadView from '../DownloadData/DownloadView';
+import UpdateDataView from '../UpdateData/UpdateDataView';
 import './FloatingMenu.css';
 
 const FloatingMenu = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [showFileUpload, setShowFileUpload] = useState(false);
   const [showDownload, setShowDownload] = useState(false);
+  const [showUpdate, setShowUpdate] = useState(false);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -19,6 +21,11 @@ const FloatingMenu = () => {
 
   const handleDownloadClick = () => {
     setShowDownload(true);
+    setIsMenuOpen(false);
+  };
+
+  const handleUpdateClick = () => {
+    setShowUpdate(true);
     setIsMenuOpen(false);
   };
 
@@ -40,16 +47,19 @@ const FloatingMenu = () => {
                 <span className="badge">15</span>
               </div>
               <div className="menu-item" style={{ animationDelay: '0.2s' }}>
-                <span>Casos</span>
+                <span>Carros</span>
                 <span className="badge">10</span>
               </div>
-              <div className="menu-item" style={{ animationDelay: '0.3s' }}>Editar datos</div>
-              <div className="menu-item" style={{ animationDelay: '0.4s' }}>Enviar Notificación</div>
-              <div className="menu-item" style={{ animationDelay: '0.5s' }}>Enviar Correos</div>
-              <div className="menu-item" style={{ animationDelay: '0.6s' }} onClick={handleFileUploadClick}>
+              <div className="menu-item" style={{ animationDelay: '0.3s' }} onClick={handleUpdateClick}>
+                Actualizar Datos
+              </div>
+              <div className="menu-item" style={{ animationDelay: '0.4s' }}>Editar datos</div>
+              <div className="menu-item" style={{ animationDelay: '0.5s' }}>Enviar Notificación</div>
+              <div className="menu-item" style={{ animationDelay: '0.6s' }}>Enviar Correos</div>
+              <div className="menu-item" style={{ animationDelay: '0.7s' }} onClick={handleFileUploadClick}>
                 Subir Archivos
               </div>
-              <div className="menu-item" style={{ animationDelay: '0.7s' }} onClick={handleDownloadClick}>
+              <div className="menu-item" style={{ animationDelay: '0.8s' }} onClick={handleDownloadClick}>
                 Descargar Datos
               </div>
             </div>
@@ -58,6 +68,7 @@ const FloatingMenu = () => {
       </div>
       {showFileUpload && <FileUploadView onClose={() => setShowFileUpload(false)} />}
       {showDownload && <DownloadView onClose={() => setShowDownload(false)} />}
+      {showUpdate && <UpdateDataView onClose={() => setShowUpdate(false)} />}
     </>
   );
 };
