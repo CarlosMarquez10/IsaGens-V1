@@ -1,0 +1,121 @@
+.floating-menu {
+  position: fixed;
+  top: 100px;
+  left: 40px;
+  z-index: 9999;
+}
+
+.dropdown-menu {
+  position: relative;
+  width: fit-content;
+}
+
+.menu-button {
+  width: 50px;
+  height: 50px;
+  padding: 12px;
+  background-color: rgba(255, 140, 0, 0.9);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  color: black;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s ease;
+  position: relative;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.menu-button:hover {
+  transform: scale(1.1);
+  background-color: rgba(255, 165, 0, 0.9);
+}
+
+.menu-button.active {
+  background-color: rgba(255, 165, 0, 0.9);
+  transform: rotate(90deg);
+}
+
+.hamburger-icon {
+  width: 24px;
+  height: 18px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.hamburger-icon span {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background-color: black;
+  border-radius: 2px;
+  transition: transform 0.3s, opacity 0.3s;
+}
+
+.active .hamburger-icon span:first-child {
+  transform: translateY(8px) rotate(45deg);
+}
+
+.active .hamburger-icon span:nth-child(2) {
+  opacity: 0;
+}
+
+.active .hamburger-icon span:last-child {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+.menu-items {
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 0;
+  min-width: 250px;
+  background-color: rgba(255, 140, 0, 0.1);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-radius: 12px;
+  overflow: hidden;
+  z-index: 9999;
+  border: 1px solid rgba(255, 140, 0, 0.2);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.menu-item {
+  padding: 12px 20px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: black;
+  transition: all 0.3s ease;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: slideIn 0.5s ease forwards;
+}
+
+@keyframes slideIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.menu-item:hover {
+  background-color: rgba(255, 140, 0, 0.2);
+}
+
+.badge {
+  background-color: rgba(255, 140, 0, 0.9);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  color: black;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 500;
+  box-shadow: 0 2px 4px rgba(255, 140, 0, 0.2);
+} 

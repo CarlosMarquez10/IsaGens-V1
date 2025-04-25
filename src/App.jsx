@@ -21,6 +21,7 @@ import { Habilitacion09H } from "./components/Habilitacion/Habilitacion09H";
 import { PruebasMotosInmel } from "./components/PruebasMotos/PruebasMotosInmel";
 import { ConsultaPagos } from "./components/ConsultaPagos/ConsultaPagos";
 import Novedad from "./components/Novedad/Novedad";
+import Motocheck from "./components/MotoCheck/Motocheck";
 // import mantenimientoInfo from "./components/matenimiento/mantenimiento.jsx"
 function App() {
   return (
@@ -160,6 +161,14 @@ function App() {
                 element={
                   <ProtectedRoute>
                     <Novedad />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/motocheck"
+                element={
+                  <ProtectedRoute>
+                    <Motocheck />
                   </ProtectedRoute>
                 }
               />

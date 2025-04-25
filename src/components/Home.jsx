@@ -9,7 +9,8 @@ import Inspecciones from "./Card/ReporteInspecciones";
 import { Habilitaciones } from "./Card/Habilitaciones";
 import { CardConsultaPagos } from "./Card/CardConsultaPagos";
 import { ReporteNovedad } from "./Card/ReporteNovedad";
-import  PruebaMoto  from "./Card/PruebaMotos";
+import PruebaMoto from "./Card/PruebaMotos";
+import MotoCheckCard from "./Card/MotoCheckCard";
 
 export function Home() {
   const { logout, loading } = useAuth();
@@ -33,7 +34,8 @@ export function Home() {
         <Habilitaciones />
         <CardConsultaPagos />
         <ReporteNovedad />
-        <PruebaMoto/>
+        <PruebaMoto />
+        <MotoCheckCard />
       </div>
     </>
   );
