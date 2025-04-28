@@ -38,7 +38,7 @@ const EnablementsUpload = () => {
 
       console.log('Enviando archivo:', file.name, 'tipo:', file.type);
 
-      const response = await fetch('https://wz9h007p-3020.use2.devtunnels.ms/api/archivos/subir-kilometraje', {
+      const response = await fetch('https://4977md17-3020.use2.devtunnels.ms/api/archivos/subir-kilometraje', {
         method: 'POST',
         headers: {
           'Accept': 'application/json',

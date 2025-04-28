@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import './UpdateData.css';
 import rotacionIcon from '../../../assets/rotacion.png';
+import axios from 'axios';
 
 const UpdateDataView = ({ onClose }) => {
   const [files, setFiles] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
   const [updating, setUpdating] = useState(null);
+  const [success, setSuccess] = useState('');
 
   useEffect(() => {
     fetchFiles();
@@ -14,7 +16,7 @@ const UpdateDataView = ({ onClose }) => {
 
   const fetchFiles = async () => {
     try {
-      const response = await fetch('https://wz9h007p-3020.use2.devtunnels.ms/api/listar-archivos');
+      const response = await fetch('https://4977md17-3020.use2.devtunnels.ms/api/listar-archivos'); // https://4977md17-3020.use2.devtunnels.ms/api/conductores , https://4977md17-3020.use2.devtunnels.ms/api/motos
       const data = await response.json();
       
       if (data.success) {
@@ -31,14 +33,32 @@ const UpdateDataView = ({ onClose }) => {
 
   const handleUpdate = async (fileName) => {
     setUpdating(fileName);
+    setError('');
+    setSuccess('');
     try {
-      // Aquí irá la llamada al backend para actualizar
-      console.log(`Actualizando ${fileName}`);
-      // Simulamos una actualización
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      alert(`Archivo ${fileName} actualizado correctamente`);
+      let endpoint = '';
+      
+      if (fileName === 'Conductores.xlsx') {
+        endpoint = 'https://4977md17-3020.use2.devtunnels.ms/api/conductores';
+      } else if (fileName === 'Motos.xlsx') {
+        endpoint = 'https://4977md17-3020.use2.devtunnels.ms/api/motos';
+      } else {
+        throw new Error('Archivo no válido para actualización');
+      }
+
+      const response = await axios.post(endpoint, {}, {
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      });
+
+      if (response.data.success) {
+        setSuccess(`Archivo ${fileName} actualizado correctamente`);
+      } else {
+        throw new Error(response.data.message || 'Error al actualizar el archivo');
+      }
     } catch (err) {
-      setError(`Error al actualizar ${fileName}`);
+      setError(`Error al actualizar ${fileName}: ${err.message}`);
     } finally {
       setUpdating(null);
     }
@@ -71,32 +91,34 @@ const UpdateDataView = ({ onClose }) => {
         <div className="update-content">
           {loading ? (
             <div className="loading">Cargando archivos...</div>
-          ) : error ? (
-            <div className="error-message">{error}</div>
           ) : (
-            <div className="files-list">
-              {files.map((file) => (
-                <div key={file.nombre} className="file-item">
-                  <div className="file-info">
-                    <h3>{file.nombre}</h3>
-                    <p>Tamaño: {formatSize(file.tamaño)}</p>
-                    <p>Última modificación: {formatDate(file.fechaModificacion)}</p>
+            <>
+              {error && <div className="error-message">{error}</div>}
+              {success && <div className="success-message">{success}</div>}
+              <div className="files-list">
+                {files.map((file) => (
+                  <div key={file.nombre} className="file-item">
+                    <div className="file-info">
+                      <h3>{file.nombre}</h3>
+                      <p>Tamaño: {formatSize(file.tamaño)}</p>
+                      <p>Última modificación: {formatDate(file.fechaModificacion)}</p>
+                    </div>
+                    <button
+                      className={`update-button ${updating === file.nombre ? 'updating' : ''}`}
+                      onClick={() => handleUpdate(file.nombre)}
+                      disabled={updating === file.nombre}
+                      title="Actualizar archivo"
+                    >
+                      <img 
+                        src={rotacionIcon} 
+                        alt="Actualizar" 
+                        className={`update-icon ${updating === file.nombre ? 'rotacion' : ''}`}
+                      />
+                    </button>
                   </div>
-                  <button
-                    className={`update-button ${updating === file.nombre ? 'updating' : ''}`}
-                    onClick={() => handleUpdate(file.nombre)}
-                    disabled={updating === file.nombre}
-                    title="Actualizar archivo"
-                  >
-                    <img 
-                      src={rotacionIcon} 
-                      alt="Actualizar" 
-                      className={`update-icon ${updating === file.nombre ? 'rotacion' : ''}`}
-                    />
-                  </button>
-                </div>
-              ))}
-            </div>
+                ))}
+              </div>
+            </>
           )}
         </div>
       </div>
