@@ -1,0 +1,183 @@
+/* Motocheck.css */
+
+/* Estilos generales del contenedor */
+.motocheck-container {
+    background-color: #f5f7fa;
+    min-height: calc(100vh - 80px);
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  /* Estilos del encabezado */
+  .motocheck-header {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  
+  .motocheck-title {
+    font-size: 28px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 8px;
+  }
+  
+  .motocheck-subtitle {
+    font-size: 18px;
+    color: #666;
+  }
+  
+  /* Estilos de la tarjeta principal */
+  .motocheck-card {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    margin-bottom: 30px;
+  }
+  
+  .card-header {
+    padding: 20px;
+    border-bottom: 1px solid #eaeaea;
+  }
+  
+  .card-header h2 {
+    font-size: 20px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 8px;
+  }
+  
+  .card-header p {
+    color: #666;
+    font-size: 14px;
+  }
+  
+  /* Estilos de la tabla */
+  .motocheck-table-container {
+    overflow-x: auto;
+  }
+  
+  .motocheck-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .motocheck-table th {
+    background-color: #f1f5f9;
+    color: #4a5568;
+    font-weight: 600;
+    text-align: left;
+    padding: 16px;
+    font-size: 14px;
+    text-transform: uppercase;
+    border-bottom: 1px solid #e2e8f0;
+  }
+  
+  .motocheck-table td {
+    padding: 16px;
+    border-bottom: 1px solid #e2e8f0;
+    font-size: 14px;
+  }
+  
+  .motocheck-table tr:hover {
+    background-color: #f9fafb;
+  }
+  
+  /* Estilos para los estados */
+  .status-badge {
+    display: inline-block;
+    padding: 5px 12px;
+    border-radius: 50px;
+    font-size: 13px;
+    font-weight: 500;
+    text-align: center;
+  }
+  
+  .status-vigente {
+    background-color: #10b981;
+    color: white;
+  }
+  
+  .status-other {
+    background-color: #ef4444;
+    color: white;
+  }
+  
+  /* Estilos para el estado de carga */
+  .loading-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 0;
+  }
+  
+  .loading-spinner {
+    border: 4px solid rgba(0, 0, 0, 0.1);
+    border-left: 4px solid #3b82f6;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 1s linear infinite;
+    margin-bottom: 20px;
+  }
+  
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  
+  .loading-text {
+    font-size: 18px;
+    color: #666;
+  }
+  
+  /* Estilos para el estado de error */
+  .error-container {
+    text-align: center;
+    padding: 40px 20px;
+    background-color: #fee2e2;
+    color: #b91c1c;
+  }
+  
+  .error-message {
+    font-size: 18px;
+    margin-bottom: 20px;
+  }
+  
+  .retry-button {
+    background-color: #3b82f6;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+  
+  .retry-button:hover {
+    background-color: #2563eb;
+  }
+  
+  /* Estilos para estado vacío */
+  .empty-state {
+    text-align: center;
+    padding: 60px 20px;
+    color: #6b7280;
+  }
+  
+  .empty-state p:first-child {
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+  
+  .empty-state p:last-child {
+    font-size: 14px;
+  }

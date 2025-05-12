@@ -16,7 +16,7 @@ const UpdateDataView = ({ onClose }) => {
 
   const fetchFiles = async () => {
     try {
-      const response = await fetch('https://4977md17-3020.use2.devtunnels.ms/api/listar-archivos'); // https://4977md17-3020.use2.devtunnels.ms/api/conductores , https://4977md17-3020.use2.devtunnels.ms/api/motos
+      const response = await fetch('https://74pbcspn-3020.use2.devtunnels.ms/api/listar-archivos'); 
       const data = await response.json();
       
       if (data.success) {
@@ -39,10 +39,14 @@ const UpdateDataView = ({ onClose }) => {
       let endpoint = '';
       
       if (fileName === 'Conductores.xlsx') {
-        endpoint = 'https://4977md17-3020.use2.devtunnels.ms/api/conductores';
+        endpoint = 'https://74pbcspn-3020.use2.devtunnels.ms/api/conductores';
       } else if (fileName === 'Motos.xlsx') {
-        endpoint = 'https://4977md17-3020.use2.devtunnels.ms/api/motos';
-      } else {
+        endpoint = 'https://74pbcspn-3020.use2.devtunnels.ms/api/motos';
+      } else if(fileName === 'Reporte_Mantenimiento_Vehiculos.xlsx') {
+        endpoint = 'https://74pbcspn-3020.use2.devtunnels.ms/api/procesar-mantenimiento';
+      }else if(fileName === 'ReporteHabilitaciones.xlsx') {
+        endpoint = 'https://74pbcspn-3020.use2.devtunnels.ms/api/procesar-habilitaciones';
+      }else{
         throw new Error('Archivo no válido para actualización');
       }
 

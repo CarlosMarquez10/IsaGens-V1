@@ -2,7 +2,26 @@ import React from 'react';
 import './DownloadData.css';
 
 const DownloadView = ({ onClose }) => {
-  const handleDownload = (type) => {
+  const handleDownload = async (type) => {
+    if (type === 'informacion-completa') {
+      try {
+        const response = await fetch('https://74pbcspn-3020.use2.devtunnels.ms/api/informacion-completa', {
+          method: 'GET',
+        });
+        const blob = await response.blob();
+        const url = window.URL.createObjectURL(blob);
+        const link = document.createElement('a');
+        link.href = url;
+        link.setAttribute('download', 'informacion-completa.xlsx');
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        window.URL.revokeObjectURL(url);
+      } catch (err) {
+        alert('Error al descargar el archivo');
+      }
+      return;
+    }
     // Aquí irán las llamadas al backend cuando esté listo
     console.log(`Descargando ${type}`);
   };
@@ -54,6 +73,20 @@ const DownloadView = ({ onClose }) => {
                 <p>Descarga el registro de habilitaciones</p>
               </div>
             </button>
+
+            <button 
+              className="download-button enablements"
+              onClick={() => handleDownload('informacion-completa')}
+            >
+              <div className="download-icon">
+                <i className="fas fa-clipboard-check"></i>
+              </div>
+              <div className="download-info">
+                <h3>Información Completa (Excel)</h3>
+                <p>Descarga el archivo Excel con toda la información</p>
+              </div>
+            </button>
+
           </div>
         </div>
       </div>

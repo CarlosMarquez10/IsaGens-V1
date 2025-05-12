@@ -38,7 +38,7 @@ const OilChangeUpload = () => {
 
       console.log('Enviando archivo:', file.name, 'tipo:', file.type);
 
-      const response = await fetch('https://4977md17-3020.use2.devtunnels.ms/api/archivos/subir-aceite', {
+      const response = await fetch('https://74pbcspn-3020.use2.devtunnels.ms/api/archivos/subir-aceite', {
         method: 'POST',
         headers: {
           'Accept': 'application/json',
